@@ -29,7 +29,7 @@ public class TelaLogin {
 
     @FXML
     void login(ActionEvent event) {
-
+        App.pushScreen("PRINCIPAL");
     }
 
 }

@@ -21,6 +21,18 @@
     -fx-border-radius: 4px;
 }
 
+.botoes{
+    -fx-background-color: transparent;
+    -fx-border-color: purple;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 4px;
+}
+
+.botao-menu{
+    -fx-background-color: white;
+    -fx-border-radius: 4px;
+}
+
 .botao-login{
     -fx-background-color: purple;
     -fx-border-radius: 4px;

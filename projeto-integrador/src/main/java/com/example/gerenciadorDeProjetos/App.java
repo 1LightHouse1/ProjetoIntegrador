@@ -23,6 +23,7 @@ public class App extends BaseAppNavigator{
     public void registrarTelas() {
         registraTela("LOGIN", new ScreenRegistryFXML(App.class, "telalogin.fxml", o->new TelaLogin()));
         registraTela("CADASTRARFUNCIONARIO", new ScreenRegistryFXML(App.class, "cadastrarfuncionario.fxml", o->new TelaCadastrarFuncionario()));
+        registraTela("PRINCIPAL", new ScreenRegistryFXML(App.class, "principal.fxml", o->new Principal()));
     }
 
 }

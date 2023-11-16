@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenciadorDeProjetos.controller.TelaCadastrarTarefa">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="200.0" styleClass="pane-login" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="69.0" layoutY="14.0" prefHeight="30.0" prefWidth="68.0" text="Projetos" textFill="WHITE">
+               <font>
+                  <Font name="Noto Serif Armenian Regular" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btcadastrar" layoutX="38.0" layoutY="68.0" mnemonicParsing="false" onAction="#cadastrarProjeto" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Cadastrar Tarefa" textFill="#80007d" />
+            <Button fx:id="btvoltar" layoutX="58.0" layoutY="354.0" mnemonicParsing="false" onAction="#voltar" prefHeight="25.0" prefWidth="87.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Voltar" textFill="#80007d" />
+            <Button fx:id="btlistar" layoutX="38.0" layoutY="112.0" mnemonicParsing="false" onAction="#ListarProjeto" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Listar Tarefa" textFill="#80007d" />
+            <Button fx:id="btalterar" layoutX="37.0" layoutY="158.0" mnemonicParsing="false" onAction="#alterarProjeto" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Alterar Tarefa" textFill="#80007d" />
+            <Button fx:id="btexcluir" layoutX="37.0" layoutY="202.0" mnemonicParsing="false" onAction="#excluirProjeto" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Excluir Tarefa" textFill="#80007d" />
+            <Button fx:id="btadicionar" layoutX="36.0" layoutY="246.0" mnemonicParsing="false" onAction="#adicionarUsuario" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Adicionar Usuário" textFill="#80007d" />
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="403.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="tfstatus" layoutX="27.0" layoutY="71.0" promptText="Status" />
+            <TextField fx:id="tfnome" layoutX="27.0" layoutY="25.0" promptText="Nome da Tarefa" />
+            <TextArea fx:id="tadescricao" layoutX="199.0" layoutY="25.0" prefHeight="129.0" prefWidth="174.0" promptText="Descrição" />
+            <DatePicker fx:id="dpdatainicio" layoutX="27.0" layoutY="111.0" prefHeight="25.0" prefWidth="149.0" promptText="Data Inicio" />
+            <DatePicker fx:id="dpdatatermino" layoutX="27.0" layoutY="153.0" prefHeight="25.0" prefWidth="149.0" promptText="Data Término" />
+            <Button fx:id="btcadastrar" layoutX="294.0" layoutY="164.0" mnemonicParsing="false" onAction="#login" prefHeight="28.0" prefWidth="80.0" styleClass="botao-login" stylesheets="@css/style.css" text="Cadastrar" textFill="WHITE" />
+            <Button fx:id="btcancelar" layoutX="198.0" layoutY="164.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="80.0" styleClass="botao-cadastrar" stylesheets="@css/style.css" text="Cancelar" textFill="#710079" />
+         </children>
+      </AnchorPane>
+   </right>
+</BorderPane>
