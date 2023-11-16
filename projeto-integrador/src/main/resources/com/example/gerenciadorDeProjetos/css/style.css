@@ -1,0 +1,33 @@
+.pane-login{
+    -fx-background-color: purple;
+}
+
+.login{
+    -fx-background-color: transparent;
+    -fx-border-color: purple;
+    -fx-border-width: 0px 0px 2px 0px;
+}
+
+.senha{
+    -fx-background-color: transparent;
+    -fx-border-color: purple;
+    -fx-border-width: 0px 0px 2px 0px;
+}
+
+.botao-cadastrar{
+    -fx-background-color: transparent;
+    -fx-border-color: purple;
+    -fx-border-width: 2px 2px 2px 2px;
+    -fx-border-radius: 4px;
+}
+
+.botao-login{
+    -fx-background-color: purple;
+    -fx-border-radius: 4px;
+}
+
+.cargo{
+    -fx-background-color: transparent;
+    -fx-border-color: purple;
+    -fx-border-width: 0px 0px 2px 0px;
+}

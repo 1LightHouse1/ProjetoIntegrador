@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenciadorDeProjetos.controller.TelaCadastrarFuncionario">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="tfnome" layoutX="25.0" layoutY="87.0" prefHeight="27.0" prefWidth="113.0" promptText="Nome" styleClass="login" stylesheets="@css/style.css" />
+            <Button fx:id="btcadastrar" layoutX="165.0" layoutY="285.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="29.0" prefWidth="90.0" styleClass="botao-login" stylesheets="@css/style.css" text="Cadastrar" textFill="WHITE" />
+            <Button fx:id="btvoltar" layoutX="45.0" layoutY="285.0" mnemonicParsing="false" onAction="#voltar" prefHeight="29.0" prefWidth="90.0" styleClass="botao-cadastrar" stylesheets="@css/style.css" text="Voltar" textFill="#710079" />
+            <TextField fx:id="tfemail" layoutX="26.0" layoutY="134.0" prefHeight="27.0" prefWidth="249.0" promptText="Email" styleClass="login" stylesheets="@css/style.css" />
+            <TextField fx:id="tflogin" layoutX="158.0" layoutY="87.0" prefHeight="27.0" prefWidth="117.0" promptText="Login" styleClass="login" stylesheets="@css/style.css" />
+            <TextField fx:id="tfcpf" layoutX="161.0" layoutY="185.0" prefHeight="27.0" prefWidth="114.0" promptText="CPF" styleClass="login" stylesheets="@css/style.css" />
+            <ComboBox fx:id="cbNivelDeAcesso" layoutX="25.0" layoutY="230.0" prefHeight="27.0" prefWidth="249.0" promptText="Cargo" styleClass="cargo" stylesheets="@css/style.css" />
+            <Label layoutX="101.0" layoutY="29.0" prefHeight="35.0" prefWidth="100.0" text="Cadastro" textFill="#830071">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="pfsenha" layoutX="25.0" layoutY="185.0" prefHeight="27.0" prefWidth="115.0" promptText="Senha" styleClass="senha" stylesheets="@css/style.css" />
+         </children>
+      </AnchorPane>
+   </left>
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="pane-login" stylesheets="@css/style.css" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>

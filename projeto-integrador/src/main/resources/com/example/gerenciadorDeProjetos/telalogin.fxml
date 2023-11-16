@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <BorderPane prefHeight="400.0" prefWidth="600.0">
-         <left>
-            <VBox prefHeight="400.0" prefWidth="300.0" style="-fx-background-color: purple;" stylesheets="@css/style.css" BorderPane.alignment="CENTER" />
-         </left>
-         <right>
-            <Pane prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
-               <children>
-                  <TextField layoutX="77.0" layoutY="168.0" prefHeight="25.0" prefWidth="198.0" />
-                  <TextField layoutX="77.0" layoutY="208.0" prefHeight="25.0" prefWidth="198.0" />
-               </children>
-            </Pane>
-         </right>
-      </BorderPane>
-   </children>
-</AnchorPane>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenciadorDeProjetos.controller.TelaLogin">
+   <right>
+      <AnchorPane prefHeight="400.0" prefWidth="300.0" BorderPane.alignment="CENTER">
+         <children>
+            <TextField fx:id="tflogin" layoutX="55.0" layoutY="151.0" prefHeight="25.0" prefWidth="191.0" promptText="Login" styleClass="login" stylesheets="@css/style.css" />
+            <Label layoutX="54.0" layoutY="55.0" prefHeight="56.0" prefWidth="192.0" text="Bem-Vindo!" textFill="#610032">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </Label>
+            <PasswordField fx:id="pfsenha" layoutX="54.0" layoutY="199.0" prefHeight="25.0" prefWidth="192.0" promptText="Senha" styleClass="senha" stylesheets="@css/style.css" />
+            <Button fx:id="btlogin" layoutX="168.0" layoutY="251.0" mnemonicParsing="false" onAction="#login" prefHeight="29.0" prefWidth="90.0" styleClass="botao-login" stylesheets="@css/style.css" text="Login" textFill="WHITE" />
+            <Button fx:id="btcadastrar" layoutX="48.0" layoutY="251.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="29.0" prefWidth="90.0" styleClass="botao-cadastrar" stylesheets="@css/style.css" text="Cadastrar" textFill="#710079" />
+         </children>
+      </AnchorPane>
+   </right>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="300.0" styleClass="pane-login" stylesheets="@css/style.css" BorderPane.alignment="CENTER" />
+   </center>
+</BorderPane>
