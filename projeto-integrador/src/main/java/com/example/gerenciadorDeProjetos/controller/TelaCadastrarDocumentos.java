@@ -23,12 +23,12 @@ public class TelaCadastrarDocumentos {
     private ComboBox<?> cbProjeto;
 
     @FXML
-    void cadastrarDocumento(ActionEvent event) {
+    void cadastrar(ActionEvent event) {
 
     }
 
     @FXML
-    void cadastrarProjeto(ActionEvent event) {
+    void cadastrarDocumento(ActionEvent event) {
 
     }
 

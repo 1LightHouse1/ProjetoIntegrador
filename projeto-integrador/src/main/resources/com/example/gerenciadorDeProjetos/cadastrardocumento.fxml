@@ -16,7 +16,7 @@
                   <Font name="Noto Serif Armenian Regular" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="btcadastrar" layoutX="29.0" layoutY="57.0" mnemonicParsing="false" onAction="#cadastrarProjeto" prefHeight="25.0" prefWidth="142.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Adicionar Documento" textFill="#80007d" />
+            <Button fx:id="btcadastrar" layoutX="29.0" layoutY="57.0" mnemonicParsing="false" onAction="#cadastrarDocumento" prefHeight="25.0" prefWidth="142.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Adicionar Documento" textFill="#80007d" />
             <Button fx:id="btvoltar" layoutX="58.0" layoutY="354.0" mnemonicParsing="false" onAction="#voltar" prefHeight="25.0" prefWidth="87.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Voltar" textFill="#80007d" />
          </children>
       </AnchorPane>
@@ -24,7 +24,7 @@
    <right>
       <AnchorPane prefHeight="400.0" prefWidth="403.0" BorderPane.alignment="CENTER">
          <children>
-            <Button fx:id="btcadastrar" layoutX="265.0" layoutY="111.0" mnemonicParsing="false" onAction="#cadastrarDocumento" prefHeight="28.0" prefWidth="80.0" styleClass="botao-login" stylesheets="@css/style.css" text="Cadastrar" textFill="WHITE" />
+            <Button fx:id="btcadastrar" layoutX="265.0" layoutY="111.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="28.0" prefWidth="80.0" styleClass="botao-login" stylesheets="@css/style.css" text="Cadastrar" textFill="WHITE" />
             <Button fx:id="btcancelar" layoutX="169.0" layoutY="111.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="80.0" styleClass="botao-cadastrar" stylesheets="@css/style.css" text="Cancelar" textFill="#710079" />
             <Button fx:id="btselecionardoc" layoutX="26.0" layoutY="54.0" mnemonicParsing="false" onAction="#selecionardocumento" prefHeight="29.0" prefWidth="143.0" styleClass="botao-cadastrar" stylesheets="@css/style.css" text="Selecionar Documento" textFill="#710079" />
             <ComboBox fx:id="cbProjeto" layoutX="189.0" layoutY="55.0" prefHeight="27.0" prefWidth="152.0" promptText="Selecionar Projeto" styleClass="cargo" stylesheets="@css/style.css" />
