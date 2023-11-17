@@ -13,16 +13,10 @@ public class TelaCadastrarProjeto {
     private Button btadicionar;
 
     @FXML
-    private Button btalterar;
-
-    @FXML
     private Button btcadastrar;
 
     @FXML
     private Button btcancelar;
-
-    @FXML
-    private Button btexcluir;
 
     @FXML
     private Button btlistar;
@@ -56,22 +50,12 @@ public class TelaCadastrarProjeto {
     }
 
     @FXML
-    void alterarProjeto(ActionEvent event) {
-
-    }
-
-    @FXML
     void cadastrarProjeto(ActionEvent event) {
 
     }
 
     @FXML
     void cancelar(ActionEvent event) {
-
-    }
-
-    @FXML
-    void excluirProjeto(ActionEvent event) {
 
     }
 

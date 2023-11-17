@@ -20,10 +20,8 @@
             </Label>
             <Button fx:id="btcadastrar" layoutX="38.0" layoutY="68.0" mnemonicParsing="false" onAction="#cadastrarProjeto" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Cadastrar Projeto" textFill="#80007d" />
             <Button fx:id="btvoltar" layoutX="58.0" layoutY="354.0" mnemonicParsing="false" onAction="#voltar" prefHeight="25.0" prefWidth="87.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Voltar" textFill="#80007d" />
-            <Button fx:id="btlistar" layoutX="38.0" layoutY="112.0" mnemonicParsing="false" onAction="#ListarProjeto" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Listar Projetos" textFill="#80007d" />
-            <Button fx:id="btalterar" layoutX="37.0" layoutY="158.0" mnemonicParsing="false" onAction="#alterarProjeto" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Alterar Projeto" textFill="#80007d" />
-            <Button fx:id="btexcluir" layoutX="37.0" layoutY="202.0" mnemonicParsing="false" onAction="#excluirProjeto" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Excluir Projeto" textFill="#80007d" />
-            <Button fx:id="btadicionar" layoutX="36.0" layoutY="246.0" mnemonicParsing="false" onAction="#adicionarUsuario" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Adicionar Usuário" textFill="#80007d" />
+            <Button fx:id="btlistar" layoutX="38.0" layoutY="109.0" mnemonicParsing="false" onAction="#ListarProjeto" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Listar Projetos" textFill="#80007d" />
+            <Button fx:id="btadicionar" layoutX="37.0" layoutY="150.0" mnemonicParsing="false" onAction="#adicionarUsuario" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Adicionar Usuário" textFill="#80007d" />
          </children>
       </AnchorPane>
    </left>

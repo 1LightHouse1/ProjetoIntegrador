@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gerenciadorDeProjetos.controller.TelaCadastrarProjeto">
+   <left>
+      <AnchorPane prefHeight="400.0" prefWidth="200.0" styleClass="pane-login" stylesheets="@css/style.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="69.0" layoutY="14.0" prefHeight="30.0" prefWidth="68.0" text="Projetos" textFill="WHITE">
+               <font>
+                  <Font name="Noto Serif Armenian Regular" size="18.0" />
+               </font>
+            </Label>
+            <Button fx:id="btcadastrar" layoutX="38.0" layoutY="68.0" mnemonicParsing="false" onAction="#cadastrarProjeto" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Cadastrar Projeto" textFill="#80007d" />
+            <Button fx:id="btvoltar" layoutX="58.0" layoutY="354.0" mnemonicParsing="false" onAction="#voltar" prefHeight="25.0" prefWidth="87.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Voltar" textFill="#80007d" />
+            <Button fx:id="btlistar" layoutX="38.0" layoutY="109.0" mnemonicParsing="false" onAction="#listarProjeto" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Listar Projetos" textFill="#80007d" />
+            <Button fx:id="btadicionar" layoutX="37.0" layoutY="150.0" mnemonicParsing="false" onAction="#adicionarUsuario" prefHeight="25.0" prefWidth="130.0" styleClass="botao-menu" stylesheets="@css/style.css" text="Adicionar Usuário" textFill="#80007d" />
+         </children>
+      </AnchorPane>
+   </left>
+   <center>
+      <AnchorPane prefHeight="400.0" prefWidth="403.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button fx:id="btAlterar" layoutX="303.0" layoutY="247.0" mnemonicParsing="false" onAction="#editarProjeto" prefHeight="28.0" prefWidth="80.0" styleClass="botao-login" stylesheets="@css/style.css" text="Alterar" textFill="WHITE" />
+            <Button fx:id="btcancelar" layoutX="123.0" layoutY="247.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="80.0" styleClass="botao-cadastrar" stylesheets="@css/style.css" text="Cancelar" textFill="#710079" />
+            <TableView layoutX="18.0" layoutY="32.0" prefHeight="200.0" prefWidth="365.0">
+              <columns>
+                <TableColumn prefWidth="85.0" text="Nome" />
+                <TableColumn prefWidth="92.0" text="Data Inicio" />
+                  <TableColumn prefWidth="91.0" text="Data Termino" />
+                  <TableColumn prefWidth="96.0" text="Status" />
+              </columns>
+            </TableView>
+            <Button fx:id="btExcluir" layoutX="213.0" layoutY="248.0" mnemonicParsing="false" onAction="#excluirProjeto" prefHeight="28.0" prefWidth="80.0" styleClass="botao-login" stylesheets="@css/style.css" text="Excluir" textFill="WHITE" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>

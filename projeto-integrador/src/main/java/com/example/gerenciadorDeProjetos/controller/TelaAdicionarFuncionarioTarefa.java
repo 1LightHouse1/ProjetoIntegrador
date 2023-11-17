@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 
-public class TelaCadastrarDocumentos {
+public class TelaAdicionarFuncionarioTarefa {
 
     @FXML
     private Button btcadastrar;
@@ -14,31 +14,26 @@ public class TelaCadastrarDocumentos {
     private Button btcancelar;
 
     @FXML
-    private Button btselecionardoc;
-
-    @FXML
     private Button btvoltar;
 
     @FXML
-    private ComboBox<?> cbProjeto;
+    private ComboBox<?> cbFuncionario;
 
     @FXML
-    void cadastrarDocumento(ActionEvent event) {
+    private ComboBox<?> cbProjeto1;
+
+    @FXML
+    void adicionarFuncionario(ActionEvent event) {
 
     }
 
     @FXML
-    void cadastrarProjeto(ActionEvent event) {
+    void cadastrar(ActionEvent event) {
 
     }
 
     @FXML
     void cancelar(ActionEvent event) {
-
-    }
-
-    @FXML
-    void selecionardocumento(ActionEvent event) {
 
     }
 
