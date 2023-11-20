@@ -1,5 +1,9 @@
 package com.example.gerenciadorDeProjetos.model.daos;
 
-public class ProjetoDAO {
+/**
+ * ProjetoDAO
+ */
+public interface ProjetoDAO {
+
     
 }

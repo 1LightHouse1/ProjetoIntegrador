@@ -1,5 +1,22 @@
 package com.example.gerenciadorDeProjetos.model.daos;
 
-public class FuncionarioDAO {
-    
+import com.example.gerenciadorDeProjetos.model.entities.Funcionario;
+import com.github.hugoperlin.results.Resultado;
+
+/**
+ * FuncionarioDAO
+ */
+public interface FuncionarioDAO {
+
+    Resultado criar(Funcionario funcionario);
+
+    Resultado listar();
+    Resultado verificaEstruturaEmail(String email);
+
+    Resultado atualizar(int id, Funcionario funcionario);
+
+    Resultado deletar(int id);
+
+    Resultado verificaLogin(String login, String senha);
+
 }

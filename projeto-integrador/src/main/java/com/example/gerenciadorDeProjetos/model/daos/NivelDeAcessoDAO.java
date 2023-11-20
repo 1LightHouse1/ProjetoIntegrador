@@ -1,5 +1,12 @@
 package com.example.gerenciadorDeProjetos.model.daos;
 
-public class NivelDeAcessoDAO {
-    
+import com.github.hugoperlin.results.Resultado;
+
+/**
+ * NivelDeAcessoDAO
+ */
+public interface NivelDeAcessoDAO {
+
+    Resultado listar();
+
 }

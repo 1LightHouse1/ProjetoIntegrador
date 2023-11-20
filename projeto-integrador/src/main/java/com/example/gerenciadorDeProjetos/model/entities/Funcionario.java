@@ -2,6 +2,7 @@ package com.example.gerenciadorDeProjetos.model.entities;
 
 public class Funcionario {
 
+    private int id;
     private String cpf;
     private String nome;
     private NivelDeAcesso cargo;
@@ -19,8 +20,26 @@ public class Funcionario {
         this.email = email;
     }
 
+    public Funcionario(int id, String cpf, String nome, NivelDeAcesso cargo, String login, String senha, String email) {
+        this.id = id;
+        this.cpf = cpf;
+        this.nome = nome;
+        this.cargo = cargo;
+        this.login = login;
+        this.senha = senha;
+        this.email = email;
+    }
+
+    public int getId() {
+        return id;
+    }
+
     public String getCpf() {
         return cpf;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
     public void setCpf(String cpf) {
