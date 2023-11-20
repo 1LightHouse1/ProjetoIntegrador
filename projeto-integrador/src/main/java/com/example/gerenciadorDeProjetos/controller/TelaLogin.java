@@ -52,13 +52,11 @@ public class TelaLogin {
         Alert alert;
         
         msg = rs.getMsg();
-        if(rs.foiErro()){
+        if(rs.foiErro()){ 
             alert = new Alert(AlertType.ERROR,msg);
             alert.showAndWait();
         }else{
-            Funcionario funcionario = (Funcionario)rs.comoSucesso().getObj();
-            Login loginAtual = new Login(funcionario);
-            App.pushScreen("PRINCIPAL", o-> new Principal(loginAtual));
+            App.pushScreen("PRINCIPAL", o-> new Principal());
         }
 
     }

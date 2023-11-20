@@ -66,7 +66,7 @@ public class TelaCadastrarFuncionario implements Initializable {
 
         String msg = "";
         
-        Resultado rs = repositorioFuncionario.cadastrarFuncionario(nome, login, email, senha, cpf, cargo);
+        Resultado rs = repositorioFuncionario.cadastrarFuncionarios(nome, login, email, senha, cpf, cargo);
 
         Alert alert;
         msg = rs.getMsg();

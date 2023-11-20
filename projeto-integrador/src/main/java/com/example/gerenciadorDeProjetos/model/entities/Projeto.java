@@ -1,39 +1,56 @@
 package com.example.gerenciadorDeProjetos.model.entities;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Projeto {
     private int idProjeto;
     private ArrayList<Funcionario> funcionarios;
     private String nomeProjeto;
     private String descricao;
-    private Date dataInicio;
-    private Date dataTermino;
-    private Date dataPrevistaTermino;
+    private LocalDate dataInicio;
+    private LocalDate dataTermino;
     private String status;
 
-    public Projeto(int idProjeto, ArrayList<Funcionario> funcionarios, String nomeProjeto, String descricao,
-            Date dataInicio, Date dataTermino, Date dataPrevistaTermino, String status) {
+    public Projeto(int idProjeto, ArrayList<Funcionario> funcionarios, String nomeProjeto, String status, String descricao,
+            LocalDate dataInicio, LocalDate dataTermino) {
         this.idProjeto = idProjeto;
         this.funcionarios = funcionarios;
         this.nomeProjeto = nomeProjeto;
+        this.status = status;
         this.descricao = descricao;
         this.dataInicio = dataInicio;
         this.dataTermino = dataTermino;
-        this.dataPrevistaTermino = dataPrevistaTermino;
-        this.status = status;
     }
 
-    public Projeto(ArrayList<Funcionario> funcionarios, String nomeProjeto, String descricao,
-            Date dataInicio, Date dataTermino, Date dataPrevistaTermino, String status) {
+    public Projeto(ArrayList<Funcionario> funcionarios, String nomeProjeto, String status, String descricao,
+            LocalDate dataInicio, LocalDate dataTermino) {
+        this.idProjeto = idProjeto;
         this.funcionarios = funcionarios;
         this.nomeProjeto = nomeProjeto;
+        this.status = status;
         this.descricao = descricao;
         this.dataInicio = dataInicio;
         this.dataTermino = dataTermino;
-        this.dataPrevistaTermino = dataPrevistaTermino;
+    }
+
+    public Projeto(String nomeProjeto, String status, String descricao,
+            LocalDate dataInicio, LocalDate dataTermino) {
+        this.nomeProjeto = nomeProjeto;
         this.status = status;
+        this.descricao = descricao;
+        this.dataInicio = dataInicio;
+        this.dataTermino = dataTermino;
+    }
+
+    public Projeto(int idProjeto, String nomeProjeto, String status, String descricao,
+            LocalDate dataInicio, LocalDate dataTermino) {
+        this.idProjeto = idProjeto;
+        this.nomeProjeto = nomeProjeto;
+        this.status = status;
+        this.descricao = descricao;
+        this.dataInicio = dataInicio;
+        this.dataTermino = dataTermino;
     }
 
     public int getIdProjeto() {
@@ -68,28 +85,20 @@ public class Projeto {
         this.descricao = descricao;
     }
 
-    public Date getDataInicio() {
+    public LocalDate getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public Date getDataTermino() {
+    public LocalDate getDataTermino() {
         return dataTermino;
     }
 
-    public void setDataTermino(Date dataTermino) {
+    public void setDataTermino(LocalDate dataTermino) {
         this.dataTermino = dataTermino;
-    }
-
-    public Date getDataPrevistaTermino() {
-        return dataPrevistaTermino;
-    }
-
-    public void setDataPrevistaTermino(Date dataPrevistaTermino) {
-        this.dataPrevistaTermino = dataPrevistaTermino;
     }
 
     public String getStatus() {

@@ -1,18 +1,18 @@
 package com.example.gerenciadorDeProjetos.model.entities;
 
 public class Login {
-    private Funcionario funcionarioAtual;
+    private static Funcionario funcionarioAtual;
 
-    public Login(Funcionario funcionarioAtual){
-        this.funcionarioAtual = funcionarioAtual;
-    }
-
-    public Funcionario getFuncionarioAtual() {
+    public static Funcionario getFuncionarioAtual() {
         return funcionarioAtual;
     }
 
-    public void setFuncionarioAtual(Funcionario funcionarioAtual) {
-        funcionarioAtual = funcionarioAtual;
+    public static void setFuncionarioAtual(Funcionario funcionarioAtual) {
+        Login.funcionarioAtual = funcionarioAtual;
+    }
+
+    public static boolean estaLogado() {
+        return funcionarioAtual != null;
     }
 
 }

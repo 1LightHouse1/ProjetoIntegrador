@@ -33,7 +33,7 @@
             <TextArea fx:id="tadescricao" layoutX="199.0" layoutY="25.0" prefHeight="129.0" prefWidth="174.0" promptText="Descrição" />
             <DatePicker fx:id="dpdatainicio" layoutX="27.0" layoutY="111.0" prefHeight="25.0" prefWidth="149.0" promptText="Data Inicio" />
             <DatePicker fx:id="dpdatatermino" layoutX="27.0" layoutY="153.0" prefHeight="25.0" prefWidth="149.0" promptText="Data Término" />
-            <Button fx:id="btcadastrar" layoutX="294.0" layoutY="164.0" mnemonicParsing="false" onAction="#login" prefHeight="28.0" prefWidth="80.0" styleClass="botao-login" stylesheets="@css/style.css" text="Cadastrar" textFill="WHITE" />
+            <Button fx:id="btcadastrar" layoutX="294.0" layoutY="164.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="28.0" prefWidth="80.0" styleClass="botao-login" stylesheets="@css/style.css" text="Cadastrar" textFill="WHITE" />
             <Button fx:id="btcancelar" layoutX="198.0" layoutY="164.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="80.0" styleClass="botao-cadastrar" stylesheets="@css/style.css" text="Cancelar" textFill="#710079" />
          </children>
       </AnchorPane>

@@ -3,8 +3,10 @@ package com.example.gerenciadorDeProjetos.controller;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import com.example.gerenciadorDeProjetos.App;
 import com.example.gerenciadorDeProjetos.model.entities.Funcionario;
 import com.example.gerenciadorDeProjetos.model.entities.Login;
+import com.example.gerenciadorDeProjetos.model.repositories.RepositorioFuncionario;
 import com.mysql.cj.log.Log;
 
 import javafx.event.ActionEvent;
@@ -33,12 +35,6 @@ public class TelaMenu implements Initializable {
     @FXML
     private Label lbNome;
 
-    private Login login;
-
-    public TelaMenu(Login login){
-        this.login = login;
-
-    }
 
     @FXML
     void alterarConta(ActionEvent event) {
@@ -52,15 +48,16 @@ public class TelaMenu implements Initializable {
 
     @FXML
     void voltar(ActionEvent event) {
-
+        App.popScreen();
     }
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-
-        lbNome.setText(login.getFuncionarioAtual().getNome());
-        lbEmail.setText(login.getFuncionarioAtual().getEmail());
-        lbCargo.setText(login.getFuncionarioAtual().getCargo().getTipoDeAcesso());
+        Funcionario funcionario = Login.getFuncionarioAtual();
+        
+        lbNome.setText(funcionario.getNome());
+        lbEmail.setText(funcionario.getEmail());
+        lbCargo.setText(funcionario.getCargo().getTipoDeAcesso());
     }
 
 }

@@ -112,9 +112,7 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
 
                 NivelDeAcesso nivelDeAcesso = new NivelDeAcesso(cargo, descricao, tipoDeAcesso, permissoes);
 
-                Funcionario funcionario = new Funcionario(cpf, nome, nivelDeAcesso, login, senha, email);
-
-                Login loginAtual = new Login(funcionario);
+                Funcionario funcionario = new Funcionario(id, cpf, nome, nivelDeAcesso, login, senha, email);
 
                 return Resultado.sucesso("Usuário Logado", funcionario);
             }
@@ -136,6 +134,31 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
     public Resultado deletar(int id) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'deletar'");
+    }
+
+    @Override
+    public Resultado verificaPermissao(int id) {
+        try(Connection con = fabrica.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("SELECT IdNivelDeAcesso FROM Funcionario WHERE idFuncionario = (?)");
+
+            pstm.setInt(1, id);
+
+            ResultSet rs = pstm.executeQuery();
+            
+
+            if(rs.next()){
+                int idNivelDeAcesso = rs.getInt("IdNivelDeAcesso");
+
+                if(idNivelDeAcesso == 1){
+                    return Resultado.sucesso("Usuário Permitido", idNivelDeAcesso);
+                }
+            }
+
+            return Resultado.erro("Nivel de usuário não permitido para essas ação");
+            
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
 

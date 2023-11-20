@@ -12,6 +12,7 @@ public interface FuncionarioDAO {
 
     Resultado listar();
     Resultado verificaEstruturaEmail(String email);
+    Resultado verificaPermissao(int id);
 
     Resultado atualizar(int id, Funcionario funcionario);
 

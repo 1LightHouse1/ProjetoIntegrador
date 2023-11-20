@@ -1,10 +1,14 @@
 package com.example.gerenciadorDeProjetos.controller;
 
 import com.example.gerenciadorDeProjetos.App;
+import com.example.gerenciadorDeProjetos.model.entities.Funcionario;
 import com.example.gerenciadorDeProjetos.model.entities.Login;
+import com.example.gerenciadorDeProjetos.model.repositories.RepositorioFuncionario;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 
 public class Principal {
@@ -24,11 +28,6 @@ public class Principal {
     @FXML
     private Button btvoltar;
 
-    private Login login;
-
-    public Principal(Login login){
-        this.login = login;
-    }
 
     @FXML
     void abrirdocumentos(ActionEvent event) {
@@ -37,6 +36,8 @@ public class Principal {
 
     @FXML
     void abrirprojetos(ActionEvent event) {
+
+        App.pushScreen("CADASTRARPROJETO");
 
     }
 
@@ -47,7 +48,7 @@ public class Principal {
 
     @FXML
     void menuUsuario(ActionEvent event) {
-        App.pushScreen("TELAMENU", o-> new TelaMenu(login));
+        App.pushScreen("TELAMENU");
     }
 
     @FXML
