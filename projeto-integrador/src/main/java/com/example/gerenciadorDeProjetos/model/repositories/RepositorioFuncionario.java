@@ -84,7 +84,6 @@ public class RepositorioFuncionario {
 
     public Resultado temPermissao(){
         Funcionario funcionario = Login.getFuncionarioAtual();
-        System.out.println(funcionario.getId());
 
         return  funcionarioDAO.verificaPermissao(funcionario.getId());
     }

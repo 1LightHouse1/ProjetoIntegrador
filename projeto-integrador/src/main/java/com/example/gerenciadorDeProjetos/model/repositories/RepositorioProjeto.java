@@ -49,4 +49,34 @@ public class RepositorioProjeto {
 
         return resultado;
     }
+
+    public Resultado alterarProjeto(String nome, String status, String descricao, LocalDate dataInicio, LocalDate dataTermino, int id) {
+        if(nome.isBlank() || nome.isEmpty()){
+            return Resultado.erro("Nome Inválido");
+        }
+
+        if(status.isBlank() || status.isEmpty()){
+            return Resultado.erro("Status Inválido");
+        }
+
+        if(descricao.isBlank() || descricao.isEmpty()){
+            return Resultado.erro("descricao Inválida");
+        }
+        
+        if(dataInicio.isBefore(LocalDate.now())){
+            return Resultado.erro("Data invalida");
+        }
+
+        if(dataTermino.isBefore(LocalDate.now())){
+            return Resultado.erro("Data invalida");
+        }
+
+        Projeto projeto = new Projeto(nome, status, descricao, dataInicio, dataTermino);
+
+        return projetoDAO.atualizar(id, projeto);
+    }
+
+    public Resultado excluirProjeto(int idProjeto) {
+        return projetoDAO.deletar(idProjeto);
+    }
 }

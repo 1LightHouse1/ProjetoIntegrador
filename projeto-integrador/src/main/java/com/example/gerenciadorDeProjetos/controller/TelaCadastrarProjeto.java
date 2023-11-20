@@ -1,15 +1,19 @@
 package com.example.gerenciadorDeProjetos.controller;
 
+import java.net.URL;
 import java.time.LocalDate;
+import java.util.ResourceBundle;
 
 import com.example.gerenciadorDeProjetos.App;
 import com.example.gerenciadorDeProjetos.model.entities.Funcionario;
+import com.example.gerenciadorDeProjetos.model.entities.Projeto;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioFuncionario;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioProjeto;
 import com.github.hugoperlin.results.Resultado;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.DatePicker;
@@ -17,7 +21,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.control.Alert.AlertType;
 
-public class TelaCadastrarProjeto {
+public class TelaCadastrarProjeto implements Initializable {
 
     @FXML
     private Button btadicionar;
@@ -51,10 +55,17 @@ public class TelaCadastrarProjeto {
 
     private RepositorioFuncionario repositorioFuncionario;
     private RepositorioProjeto repositorioProjeto;
+    private Projeto projeto;
 
     public TelaCadastrarProjeto(RepositorioFuncionario repositorioFuncionario, RepositorioProjeto repositorioProjeto){
         this.repositorioFuncionario = repositorioFuncionario;
         this.repositorioProjeto = repositorioProjeto;
+    }
+
+    public TelaCadastrarProjeto(RepositorioFuncionario repositorioFuncionario, RepositorioProjeto repositorioProjeto, Projeto projeto){
+        this.repositorioFuncionario = repositorioFuncionario;
+        this.repositorioProjeto = repositorioProjeto;
+        this.projeto = projeto;
     }
 
     @FXML
@@ -78,22 +89,39 @@ public class TelaCadastrarProjeto {
         String msg = "";
         Alert alert;
 
-        Resultado rs = repositorioFuncionario.temPermissao();
+        if(projeto == null){
+            Resultado rs = repositorioFuncionario.temPermissao();
+    
+            msg = rs.getMsg();
+    
+            if(rs.foiErro()){
+                alert = new Alert(AlertType.ERROR,msg);
+                alert.showAndWait();
+            } else{
+                Funcionario funcionario = repositorioFuncionario.funcionarioLogado();
+    
+                Resultado rs2 = repositorioProjeto.cadastrarProjeto(nome, status, descricao, dataInicio, dataTermino, funcionario.getId());
+    
+                msg = rs2.getMsg();
+    
+                alert = new Alert(AlertType.INFORMATION,msg);
+                alert.showAndWait();
+            }
+        } else {
+            Resultado rs = repositorioFuncionario.temPermissao();
+            msg = rs.getMsg();
 
-        msg = rs.getMsg();
+            if(rs.foiErro()){
+                alert = new Alert(AlertType.ERROR,msg);
+                alert.showAndWait();
+            } else{
+                rs = repositorioProjeto.alterarProjeto(nome, status, descricao, dataInicio, dataTermino, projeto.getIdProjeto());
+                msg = rs.getMsg();
 
-        if(rs.foiErro()){
-            alert = new Alert(AlertType.ERROR,msg);
-            alert.showAndWait();
-        } else{
-            Funcionario funcionario = repositorioFuncionario.funcionarioLogado();
-
-            Resultado rs2 = repositorioProjeto.cadastrarProjeto(nome, status, descricao, dataInicio, dataTermino, funcionario.getId());
-
-            msg = rs2.getMsg();
-
-            alert = new Alert(AlertType.INFORMATION,msg);
-            alert.showAndWait();
+                alert = new Alert(AlertType.INFORMATION,msg);
+                alert.showAndWait();
+            }
+            
         }
 
     }
@@ -115,6 +143,17 @@ public class TelaCadastrarProjeto {
     @FXML
     void voltar(ActionEvent event) {
         App.pushScreen("PRINCIPAL");
+    }
+
+    @Override
+    public void initialize(URL arg0, ResourceBundle arg1) {
+        if(projeto != null){
+            tfnome.setText(projeto.getNomeProjeto());
+            tadescricao.setText(projeto.getDescricao());
+            tfstatus.setText(projeto.getStatus());
+            dpdatainicio.setValue(projeto.getDataInicio());
+            dpdatatermino.setValue(projeto.getDataTermino());
+        }
     }
 
 }

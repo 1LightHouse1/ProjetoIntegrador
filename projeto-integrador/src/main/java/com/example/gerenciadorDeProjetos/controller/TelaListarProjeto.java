@@ -4,7 +4,9 @@ import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
+import com.example.gerenciadorDeProjetos.App;
 import com.example.gerenciadorDeProjetos.model.entities.Projeto;
+import com.example.gerenciadorDeProjetos.model.repositories.RepositorioFuncionario;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioProjeto;
 import com.github.hugoperlin.results.Resultado;
 
@@ -13,10 +15,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.control.Alert.AlertType;
+import javafx.scene.input.MouseEvent;
 
 public class TelaListarProjeto implements Initializable {
 
@@ -57,44 +60,70 @@ public class TelaListarProjeto implements Initializable {
     private TableColumn<Projeto, String> tbcStatus;
 
     private RepositorioProjeto repositorioProjeto;
+    private RepositorioFuncionario repositorioFuncionario;
 
-    public TelaListarProjeto(RepositorioProjeto repositorioProjeto){
+    public TelaListarProjeto(RepositorioProjeto repositorioProjeto, RepositorioFuncionario repositorioFuncionario){
         this.repositorioProjeto = repositorioProjeto;
+        this.repositorioFuncionario = repositorioFuncionario;
     }
 
     @FXML
     void adicionarUsuario(ActionEvent event) {
-
+        App.pushScreen("ADICIONARUSUARIO");
     }
 
     @FXML
     void cadastrarProjeto(ActionEvent event) {
-
+        App.pushScreen("CADASTRARPROJETO");
     }
 
     @FXML
     void cancelar(ActionEvent event) {
-
+        App.pushScreen("PRINCIPAL");
     }
 
     @FXML
     void editarProjeto(ActionEvent event) {
-
+        Projeto projeto = tbProjeto.getSelectionModel().getSelectedItem();
+        
+        if(projeto != null){
+            App.pushScreen("CADASTRARPROJETO", o-> new TelaCadastrarProjeto(repositorioFuncionario, repositorioProjeto, projeto));
+        }
     }
 
     @FXML
     void excluirProjeto(ActionEvent event) {
+        Resultado rs = repositorioFuncionario.temPermissao();
+
+        String msg = "";
+        Alert alert;
+
+        if(rs.foiErro()){
+            msg = rs.getMsg();
+            alert = new Alert(AlertType.ERROR,msg);
+            alert.showAndWait();
+        } else{
+            Projeto projeto = tbProjeto.getSelectionModel().getSelectedItem();
+
+            repositorioProjeto.excluirProjeto(projeto.getIdProjeto());
+
+            App.pushScreen("LISTARPROJETOS");
+        }
 
     }
 
     @FXML
     void listarProjeto(ActionEvent event) {
+        App.pushScreen("LISTARPROJETOS");
+    }
 
+    @FXML
+    void listarProjetos(MouseEvent event) {
     }
 
     @FXML
     void voltar(ActionEvent event) {
-
+        App.pushScreen("PRINCIPAL");
     }
 
     @Override
@@ -116,5 +145,7 @@ public class TelaListarProjeto implements Initializable {
 
         tbProjeto.getItems().addAll(lista);
     }
+
+    
 
 }

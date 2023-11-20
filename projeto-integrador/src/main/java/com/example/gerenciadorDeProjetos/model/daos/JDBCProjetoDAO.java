@@ -24,7 +24,7 @@ public class JDBCProjetoDAO implements ProjetoDAO {
     @Override
     public Resultado criar(Projeto projeto, int id) {
         try(Connection con = fabrica.getConnection()) {
-            PreparedStatement pstm = con.prepareStatement("INSERT INTO Projeto(nomeProjeto, descricao, status, dataInicio, dataTermino) VALUES (?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS );
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO Projeto(nomeProjeto, descricao, status, dataInicio, dataTermino, ativo) VALUES (?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS );
             PreparedStatement pstmProjetoFuncionario = con.prepareStatement("INSERT INTO ProjetoFuncionario(idProjeto, idFuncionario) VALUES (?,?)");
 
             pstm.setString(1, projeto.getNomeProjeto());
@@ -32,6 +32,7 @@ public class JDBCProjetoDAO implements ProjetoDAO {
             pstm.setString(3, projeto.getStatus());
             pstm.setDate(4, Date.valueOf(projeto.getDataInicio()));
             pstm.setDate(5, Date.valueOf(projeto.getDataTermino()));
+            pstm.setInt(6, 1);
 
             int ret = pstm.executeUpdate();
 
@@ -57,7 +58,7 @@ public class JDBCProjetoDAO implements ProjetoDAO {
     @Override
     public Resultado listar() {
         try(Connection con = fabrica.getConnection()) {
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM Projeto");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM Projeto WHERE ativo = 1");
 
             ResultSet rs = pstm.executeQuery();
 
@@ -84,14 +85,45 @@ public class JDBCProjetoDAO implements ProjetoDAO {
     }
 
     @Override
-    public Resultado atualizar(int id, Funcionario funcionario) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
+    public Resultado atualizar(int id, Projeto novoProjeto) {
+        try (Connection con = fabrica.getConnection()){
+            PreparedStatement pstm = con.prepareStatement("UPDATE Projeto SET nomeProjeto = ?, descricao = ?, status = ?, dataInicio = ?, dataTermino = ? WHERE idProjeto = ?");
+
+            pstm.setString(1,novoProjeto.getNomeProjeto());
+            pstm.setString(2,novoProjeto.getDescricao());
+            pstm.setString(3,novoProjeto.getStatus());
+            pstm.setDate(4, Date.valueOf(novoProjeto.getDataInicio()));
+            pstm.setDate(5, Date.valueOf(novoProjeto.getDataTermino()));
+            pstm.setInt(6, id);
+
+            int ret = pstm.executeUpdate();
+
+            if(ret == 1){
+                novoProjeto.setIdProjeto(id);
+                return Resultado.sucesso("Projeto alterado", novoProjeto);
+            }
+            return Resultado.erro("Erro desconhecido!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override
     public Resultado deletar(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletar'");
+        try (Connection con = fabrica.getConnection()){
+            PreparedStatement pstm = con.prepareStatement("UPDATE Projeto SET ativo = 0 WHERE idProjeto = ?");
+
+            pstm.setInt(1, id);
+
+            int ret = pstm.executeUpdate();
+
+            if(ret == 1){
+                
+                return Resultado.sucesso("Projeto Excluido", pstm);
+            }
+            return Resultado.erro("Erro desconhecido!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 }

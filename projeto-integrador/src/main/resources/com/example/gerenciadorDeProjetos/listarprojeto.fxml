@@ -29,7 +29,7 @@
          <children>
             <Button fx:id="btAlterar" layoutX="303.0" layoutY="352.0" mnemonicParsing="false" onAction="#editarProjeto" prefHeight="28.0" prefWidth="80.0" styleClass="botao-login" stylesheets="@css/style.css" text="Alterar" textFill="WHITE" />
             <Button fx:id="btcancelar" layoutX="123.0" layoutY="352.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="80.0" styleClass="botao-cadastrar" stylesheets="@css/style.css" text="Cancelar" textFill="#710079" />
-            <TableView fx:id="tbProjeto" layoutX="18.0" layoutY="10.0" prefHeight="326.0" prefWidth="365.0">
+            <TableView fx:id="tbProjeto" layoutX="18.0" layoutY="10.0" onMouseClicked="#listarProjetos" prefHeight="326.0" prefWidth="365.0">
               <columns>
                 <TableColumn fx:id="tbcNome" prefWidth="85.0" text="Nome" />
                 <TableColumn fx:id="tbcDataInicio" prefWidth="92.0" text="Data Inicio" />
