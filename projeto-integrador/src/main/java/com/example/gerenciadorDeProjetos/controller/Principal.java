@@ -31,7 +31,7 @@ public class Principal {
 
     @FXML
     void abrirdocumentos(ActionEvent event) {
-
+        App.pushScreen("CADASTRARDOCUMENTO");
     }
 
     @FXML

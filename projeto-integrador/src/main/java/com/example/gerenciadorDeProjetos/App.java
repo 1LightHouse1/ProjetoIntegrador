@@ -3,6 +3,7 @@ package com.example.gerenciadorDeProjetos;
 import com.example.gerenciadorDeProjetos.controller.Principal;
 import com.example.gerenciadorDeProjetos.controller.TelaAdicionarFuncionarioProjeto;
 import com.example.gerenciadorDeProjetos.controller.TelaAdicionarFuncionarioTarefa;
+import com.example.gerenciadorDeProjetos.controller.TelaCadastrarDocumentos;
 import com.example.gerenciadorDeProjetos.controller.TelaCadastrarFuncionario;
 import com.example.gerenciadorDeProjetos.controller.TelaCadastrarProjeto;
 import com.example.gerenciadorDeProjetos.controller.TelaCadastrarTarefa;
@@ -10,8 +11,10 @@ import com.example.gerenciadorDeProjetos.controller.TelaListarProjeto;
 import com.example.gerenciadorDeProjetos.controller.TelaListarTarefa;
 import com.example.gerenciadorDeProjetos.controller.TelaLogin;
 import com.example.gerenciadorDeProjetos.controller.TelaMenu;
+import com.example.gerenciadorDeProjetos.model.daos.DocumentosDAO;
 import com.example.gerenciadorDeProjetos.model.daos.FabricaConexoes;
 import com.example.gerenciadorDeProjetos.model.daos.FuncionarioDAO;
+import com.example.gerenciadorDeProjetos.model.daos.JDBCDocumentosDAO;
 import com.example.gerenciadorDeProjetos.model.daos.JDBCFuncionarioDAO;
 import com.example.gerenciadorDeProjetos.model.daos.JDBCNivelDeAcessoDAO;
 import com.example.gerenciadorDeProjetos.model.daos.JDBCProjetoDAO;
@@ -20,6 +23,7 @@ import com.example.gerenciadorDeProjetos.model.daos.NivelDeAcessoDAO;
 import com.example.gerenciadorDeProjetos.model.daos.ProjetoDAO;
 import com.example.gerenciadorDeProjetos.model.daos.TarefaDAO;
 import com.example.gerenciadorDeProjetos.model.entities.Login;
+import com.example.gerenciadorDeProjetos.model.repositories.RepositorioDocumentos;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioFuncionario;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioNivelDeAcesso;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioProjeto;
@@ -27,6 +31,7 @@ import com.example.gerenciadorDeProjetos.model.repositories.RepositorioTarefa;
 
 import io.github.hugoperlin.navigatorfx.BaseAppNavigator;
 import io.github.hugoperlin.navigatorfx.ScreenRegistryFXML;
+import io.github.hugoperlin.navigatorfx.ScreenRegistryNoFXML;
 
 public class App extends BaseAppNavigator{
 
@@ -41,6 +46,9 @@ public class App extends BaseAppNavigator{
 
     private TarefaDAO tarefaDAO = new JDBCTarefaDAO(FabricaConexoes.getInstance());
     private RepositorioTarefa repositorioTarefa = new RepositorioTarefa(tarefaDAO, funcionarioDAO, projetoDAO);
+
+    private DocumentosDAO documentosDAO = new JDBCDocumentosDAO(FabricaConexoes.getInstance());
+    private RepositorioDocumentos repositorioDocumentos = new RepositorioDocumentos(documentosDAO);
 
     private Login login;
 
@@ -66,6 +74,7 @@ public class App extends BaseAppNavigator{
         registraTela("LISTARTAREFA", new ScreenRegistryFXML(App.class, "listartarefa.fxml", o-> new TelaListarTarefa(repositorioTarefa, repositorioFuncionario, repositorioProjeto)));
         registraTela("ADICIONARUSUARIOPROJETO", new ScreenRegistryFXML(App.class, "adicionarfuncionarioprojeto.fxml", o-> new TelaAdicionarFuncionarioProjeto( repositorioFuncionario, repositorioProjeto)));
         registraTela("ADICIONARUSUARIOTAREFA", new ScreenRegistryFXML(App.class, "adicionarfuncionariotarefa.fxml", o-> new TelaAdicionarFuncionarioTarefa( repositorioFuncionario, repositorioTarefa)));
+        registraTela("CADASTRARDOCUMENTO", new ScreenRegistryFXML(App.class, "cadastrardocumento.fxml", o-> new TelaCadastrarDocumentos(repositorioDocumentos, repositorioProjeto)));
     }
 
     
