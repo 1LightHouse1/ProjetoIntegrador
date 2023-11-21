@@ -76,7 +76,7 @@ public class TelaMenu implements Initializable {
 
     @FXML
     void voltar(ActionEvent event) {
-        App.popScreen();
+        App.pushScreen("PRINCIPAL");
     }
 
     @Override
