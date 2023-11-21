@@ -97,7 +97,7 @@ public class TelaCadastrarDocumentos implements Initializable {
 
     @FXML
     void voltar(ActionEvent event) {
-        App.pushScreen("CADASTRARTAREFA");
+        App.pushScreen("PRINCIPAL");
     }
 
     @Override
