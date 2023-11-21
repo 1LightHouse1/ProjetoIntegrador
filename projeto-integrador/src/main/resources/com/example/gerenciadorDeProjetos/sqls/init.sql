@@ -63,7 +63,6 @@ CREATE TABLE IF NOT EXISTS `Tarefa` (
   `nomeDaTarefa` VARCHAR(50) NOT NULL,
   `descricao` VARCHAR(200) NOT NULL,
   `status` VARCHAR(25) NOT NULL,
-  `prioridade` VARCHAR(45) NOT NULL,
   `dataInicio` DATE NOT NULL,
   `dataTermino` DATE NOT NULL,
   PRIMARY KEY (`idTarefa`)

@@ -20,4 +20,7 @@ public interface FuncionarioDAO {
 
     Resultado verificaLogin(String login, String senha);
 
+    Resultado buscarFuncionarioProjeto(int idProjeto);
+
+
 }

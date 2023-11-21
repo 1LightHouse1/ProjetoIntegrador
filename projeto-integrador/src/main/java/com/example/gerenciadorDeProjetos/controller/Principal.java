@@ -43,7 +43,7 @@ public class Principal {
 
     @FXML
     void abrirtarefa(ActionEvent event) {
-
+        App.pushScreen("CADASTRARTAREFA");
     }
 
     @FXML
@@ -53,7 +53,7 @@ public class Principal {
 
     @FXML
     void voltar(ActionEvent event) {
-
+        App.popScreen();
     }
 
 }

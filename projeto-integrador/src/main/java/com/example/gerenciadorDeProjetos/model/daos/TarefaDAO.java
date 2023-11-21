@@ -6,7 +6,7 @@ import com.example.gerenciadorDeProjetos.model.entities.Tarefa;
 import com.github.hugoperlin.results.Resultado;
 
 public interface TarefaDAO {
-    Resultado criar(Tarefa tarefa);
+    Resultado criar(Tarefa tarefa, int id);
 
     Resultado listar();
 

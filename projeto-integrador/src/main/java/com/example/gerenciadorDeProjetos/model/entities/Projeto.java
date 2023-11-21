@@ -2,10 +2,11 @@ package com.example.gerenciadorDeProjetos.model.entities;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Projeto {
     private int idProjeto;
-    private ArrayList<Funcionario> funcionarios;
+    private List<Funcionario> funcionarios;
     private String nomeProjeto;
     private String descricao;
     private LocalDate dataInicio;
@@ -61,11 +62,11 @@ public class Projeto {
         this.idProjeto = idProjeto;
     }
 
-    public ArrayList<Funcionario> getFuncionarios() {
+    public List<Funcionario> getFuncionarios() {
         return funcionarios;
     }
 
-    public void setFuncionarios(ArrayList<Funcionario> funcionarios) {
+    public void setFuncionarios(List<Funcionario> funcionarios) {
         this.funcionarios = funcionarios;
     }
 

@@ -1,5 +1,6 @@
 package com.example.gerenciadorDeProjetos.model.entities;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Tarefa {
@@ -8,12 +9,11 @@ public class Tarefa {
     private String nomeTarefa;
     private String descricao;
     private String status;
-    private Date dataInicio;
-    private Date dataTermino;
-    private Date dataPrevistaTermino;
+    private LocalDate dataInicio;
+    private LocalDate dataTermino;
 
-    public Tarefa(int idTarefa, Projeto projeto, String nomeTarefa, String descricao, String status, Date dataInicio,
-            Date dataTermino, Date dataPrevistaTermino) {
+    public Tarefa(int idTarefa, Projeto projeto, String nomeTarefa, String descricao, String status, LocalDate dataInicio,
+            LocalDate dataTermino) {
         this.idTarefa = idTarefa;
         this.projeto = projeto;
         this.nomeTarefa = nomeTarefa;
@@ -21,18 +21,17 @@ public class Tarefa {
         this.status = status;
         this.dataInicio = dataInicio;
         this.dataTermino = dataTermino;
-        this.dataPrevistaTermino = dataPrevistaTermino;
+        
     }
 
-    public Tarefa( Projeto projeto, String nomeTarefa, String descricao, String status, Date dataInicio,
-            Date dataTermino, Date dataPrevistaTermino) {
+    public Tarefa( Projeto projeto, String nomeTarefa, String descricao, String status, LocalDate dataInicio,
+            LocalDate dataTermino) {
         this.projeto = projeto;
         this.nomeTarefa = nomeTarefa;
         this.descricao = descricao;
         this.status = status;
         this.dataInicio = dataInicio;
         this.dataTermino = dataTermino;
-        this.dataPrevistaTermino = dataPrevistaTermino;
     }
 
     public int getIdTarefa() {
@@ -75,28 +74,20 @@ public class Tarefa {
         this.status = status;
     }
 
-    public Date getDataInicio() {
+    public LocalDate getDataInicio() {
         return dataInicio;
     }
 
-    public void setDataInicio(Date dataInicio) {
+    public void setDataInicio(LocalDate dataInicio) {
         this.dataInicio = dataInicio;
     }
 
-    public Date getDataTermino() {
+    public LocalDate getDataTermino() {
         return dataTermino;
     }
 
-    public void setDataTermino(Date dataTermino) {
+    public void setDataTermino(LocalDate dataTermino) {
         this.dataTermino = dataTermino;
-    }
-
-    public Date getDataPrevistaTermino() {
-        return dataPrevistaTermino;
-    }
-
-    public void setDataPrevistaTermino(Date dataPrevistaTermino) {
-        this.dataPrevistaTermino = dataPrevistaTermino;
     }
 
     @Override

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 import com.example.gerenciadorDeProjetos.App;
+import com.example.gerenciadorDeProjetos.model.entities.Funcionario;
 import com.example.gerenciadorDeProjetos.model.entities.Projeto;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioFuncionario;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioProjeto;
@@ -17,8 +18,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 
 public class TelaListarProjeto implements Initializable {
@@ -58,6 +61,9 @@ public class TelaListarProjeto implements Initializable {
 
     @FXML
     private TableColumn<Projeto, String> tbcStatus;
+
+    @FXML
+    private ListView<Funcionario> lstFuncionarios;
 
     private RepositorioProjeto repositorioProjeto;
     private RepositorioFuncionario repositorioFuncionario;
@@ -119,6 +125,12 @@ public class TelaListarProjeto implements Initializable {
 
     @FXML
     void listarProjetos(MouseEvent event) {
+        Projeto projetos = tbProjeto.getSelectionModel().getSelectedItem();
+        lstFuncionarios.getItems().clear();
+        Resultado resultado = repositorioFuncionario.buscarFuncionarioProjeto(projetos.getIdProjeto());
+        List<Funcionario> lista = (List<Funcionario>)resultado.comoSucesso().getObj();
+        lstFuncionarios.getItems().addAll(lista);
+        
     }
 
     @FXML
@@ -133,6 +145,7 @@ public class TelaListarProjeto implements Initializable {
         tbcDataTermino.setCellValueFactory(celula->new SimpleStringProperty(celula.getValue().getDataTermino()+""));
         tbcStatus.setCellValueFactory(celula->new SimpleStringProperty(celula.getValue().getStatus()+""));
 
+
         Resultado rs = repositorioProjeto.listar();
 
         if(rs.foiErro()){
@@ -142,7 +155,6 @@ public class TelaListarProjeto implements Initializable {
         }
 
         List<Projeto> lista = (List)rs.comoSucesso().getObj();
-
         tbProjeto.getItems().addAll(lista);
     }
 

@@ -2,6 +2,7 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -28,16 +29,22 @@
       <AnchorPane prefHeight="400.0" prefWidth="403.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btAlterar" layoutX="303.0" layoutY="247.0" mnemonicParsing="false" onAction="#editarTarefa" prefHeight="28.0" prefWidth="80.0" styleClass="botao-login" stylesheets="@css/style.css" text="Alterar" textFill="WHITE" />
-            <Button fx:id="btcancelar" layoutX="123.0" layoutY="247.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="80.0" styleClass="botao-cadastrar" stylesheets="@css/style.css" text="Cancelar" textFill="#710079" />
-            <TableView layoutX="18.0" layoutY="32.0" prefHeight="200.0" prefWidth="365.0">
+            <Button fx:id="btcancelar" layoutX="303.0" layoutY="292.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="80.0" styleClass="botao-cadastrar" stylesheets="@css/style.css" text="Cancelar" textFill="#710079" />
+            <TableView layoutX="21.0" layoutY="14.0" onMouseClicked="#listarTarefas" prefHeight="166.0" prefWidth="365.0">
                <columns>
-                  <TableColumn prefWidth="78.0" text="Nome" />
-                  <TableColumn prefWidth="91.0" text="Projeto" />
-                  <TableColumn prefWidth="96.0" text="Data Término" />
-                  <TableColumn prefWidth="96.0" text="Status" />
+                  <TableColumn fx:id="tbcTarefa" prefWidth="78.0" text="Tarefa" />
+                  <TableColumn fx:id="tbcProjeto" prefWidth="91.0" text="Projeto" />
+                  <TableColumn fx:id="tbcDataTermino" prefWidth="96.0" text="Data Término" />
+                  <TableColumn fx:id="tbcStatus" prefWidth="96.0" text="Status" />
                </columns>
             </TableView>
-            <Button fx:id="btExcluir" layoutX="213.0" layoutY="248.0" mnemonicParsing="false" onAction="#excluirTarefa" prefHeight="28.0" prefWidth="80.0" styleClass="botao-login" stylesheets="@css/style.css" text="Excluir" textFill="WHITE" />
+            <Button fx:id="btExcluir" layoutX="303.0" layoutY="200.0" mnemonicParsing="false" onAction="#excluirTarefa" prefHeight="28.0" prefWidth="80.0" styleClass="botao-login" stylesheets="@css/style.css" text="Excluir" textFill="WHITE" />
+            <Label layoutX="21.0" layoutY="183.0" text="Funcionarios da Tarefa">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <ListView fx:id="lstFuncionarios" layoutX="21.0" layoutY="207.0" prefHeight="182.0" prefWidth="269.0" />
          </children>
       </AnchorPane>
    </center>

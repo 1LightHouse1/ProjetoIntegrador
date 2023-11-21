@@ -88,7 +88,7 @@ public class Funcionario {
 
     @Override
     public String toString() {
-        return "Nome: " + this.nome;
+        return "Funcionario: " + this.nome;
     }
     
 }

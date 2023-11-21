@@ -1,7 +1,9 @@
 package com.example.gerenciadorDeProjetos.model.repositories;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import com.example.gerenciadorDeProjetos.model.daos.FuncionarioDAO;
 import com.example.gerenciadorDeProjetos.model.daos.ProjetoDAO;
 import com.example.gerenciadorDeProjetos.model.entities.Funcionario;
 import com.example.gerenciadorDeProjetos.model.entities.Projeto;
@@ -10,9 +12,11 @@ import com.github.hugoperlin.results.Resultado;
 public class RepositorioProjeto {
     
     private ProjetoDAO projetoDAO;
+    private FuncionarioDAO funcionarioDAO;
 
-    public RepositorioProjeto(ProjetoDAO projetoDAO) {
+    public RepositorioProjeto(ProjetoDAO projetoDAO, FuncionarioDAO funcionarioDAO) {
         this.projetoDAO = projetoDAO;
+        this.funcionarioDAO = funcionarioDAO;
     }
 
     public Resultado cadastrarProjeto(String nome, String status, String descricao, LocalDate dataInicio, LocalDate dataTermino, int idFuncionario){
@@ -47,6 +51,20 @@ public class RepositorioProjeto {
     public Resultado listar(){
         Resultado resultado = projetoDAO.listar();
 
+        if(resultado.foiSucesso()){
+            List<Projeto> lista = (List<Projeto>)resultado.comoSucesso().getObj();
+
+            for(Projeto projeto: lista){
+                Resultado resultado2 = funcionarioDAO.buscarFuncionarioProjeto(projeto.getIdProjeto());
+
+                if(resultado2.foiErro()){
+                    return resultado2;
+                }
+
+                List<Funcionario> funcionarios = (List<Funcionario>)resultado2.comoSucesso().getObj();
+                projeto.setFuncionarios(funcionarios);
+            }
+        }
         return resultado;
     }
 
@@ -79,4 +97,6 @@ public class RepositorioProjeto {
     public Resultado excluirProjeto(int idProjeto) {
         return projetoDAO.deletar(idProjeto);
     }
+
+    
 }
