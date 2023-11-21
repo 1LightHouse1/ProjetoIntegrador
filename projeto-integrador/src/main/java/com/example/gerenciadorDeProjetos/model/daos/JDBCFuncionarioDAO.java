@@ -84,7 +84,7 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
     @Override
     public Resultado verificaLogin(String login, String senha) {
         try(Connection con = fabrica.getConnection()) {
-            PreparedStatement pstm = con.prepareStatement("SELECT * FROM Funcionario WHERE login = (?) and senha = (?)");
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM Funcionario WHERE login = (?) and senha = (?) and ativo = 1");
 
             pstm.setString(1, login);
             pstm.setString(2, senha);
@@ -153,8 +153,21 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
 
     @Override
     public Resultado deletar(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletar'");
+        try (Connection con = fabrica.getConnection()){
+            PreparedStatement pstm = con.prepareStatement("UPDATE Funcionario SET ativo = 0 WHERE idFuncionario = ?");
+
+            pstm.setInt(1, id);
+
+            int ret = pstm.executeUpdate();
+
+            if(ret == 1){
+                
+                return Resultado.sucesso("Usuário Excluido", pstm);
+            }
+            return Resultado.erro("Erro desconhecido!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override

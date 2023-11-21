@@ -127,6 +127,10 @@ public class RepositorioFuncionario {
 
         return funcionarioDAO.atualizar(idFuncionario, funcionario);
     }
+
+    public Resultado excluirFuncionario(int idFuncionario) {
+        return funcionarioDAO.deletar(idFuncionario);
+    }
     
     
 }

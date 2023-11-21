@@ -9,11 +9,14 @@ import com.example.gerenciadorDeProjetos.model.entities.Login;
 import com.example.gerenciadorDeProjetos.model.entities.Projeto;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioFuncionario;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioNivelDeAcesso;
+import com.github.hugoperlin.results.Resultado;
 import com.mysql.cj.log.Log;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
@@ -56,7 +59,19 @@ public class TelaMenu implements Initializable {
 
     @FXML
     void excluirConta(ActionEvent event) {
+            Funcionario funcionario = Login.getFuncionarioAtual();
 
+            Resultado rs2 = repositorioFuncionario.excluirFuncionario(funcionario.getId());
+
+            String msg = "";
+            Alert alert;
+
+            msg = rs2.getMsg();
+
+            alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
+
+            App.pushScreen("LOGIN");
     }
 
     @FXML
