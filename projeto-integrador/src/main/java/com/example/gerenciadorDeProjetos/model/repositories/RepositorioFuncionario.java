@@ -96,6 +96,37 @@ public class RepositorioFuncionario {
     public Resultado buscarFuncionarioTarefa(int idTarefa) {
         return funcionarioDAO.buscarFuncionarioTarefa(idTarefa);
     }
+
+    public Resultado alterarFuncionario(String nome, String login, String email, String senha, String cpf,
+            NivelDeAcesso cargo, int idFuncionario) {
+        if(nome.isBlank() || nome.isEmpty()){
+            return Resultado.erro("Nome Inválido");
+        }
+
+        if(login.isBlank() || login.isEmpty()){
+            return Resultado.erro("Login Inválido");
+        }
+
+        if(email.isBlank() || email.isEmpty()){
+            return Resultado.erro("Email Inválido");
+        }
+        
+        if(senha.isBlank() || senha.isEmpty()){
+            return Resultado.erro("Senha Inválida");
+        }
+
+        if(cpf.isBlank() || cpf.isEmpty()){
+            return Resultado.erro("CPF Inválido");
+        }
+
+        if(cargo == null){
+            return Resultado.erro("Cargo Inválida");
+        }
+
+        Funcionario funcionario = new Funcionario(cpf, nome, cargo, login, senha, email);
+
+        return funcionarioDAO.atualizar(idFuncionario, funcionario);
+    }
     
     
 }

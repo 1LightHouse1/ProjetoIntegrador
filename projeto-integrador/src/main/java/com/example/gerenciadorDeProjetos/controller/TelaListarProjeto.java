@@ -111,7 +111,12 @@ public class TelaListarProjeto implements Initializable {
         } else{
             Projeto projeto = tbProjeto.getSelectionModel().getSelectedItem();
 
-            repositorioProjeto.excluirProjeto(projeto.getIdProjeto());
+            Resultado rs2 = repositorioProjeto.excluirProjeto(projeto.getIdProjeto());
+
+            msg = rs2.getMsg();
+
+            alert = new Alert(AlertType.INFORMATION,msg);
+            alert.showAndWait();
 
             App.pushScreen("LISTARPROJETOS");
         }

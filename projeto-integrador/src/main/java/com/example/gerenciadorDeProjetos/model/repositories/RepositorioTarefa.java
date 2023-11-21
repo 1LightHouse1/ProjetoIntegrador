@@ -113,5 +113,9 @@ public class RepositorioTarefa {
         }
         return resultado;
     }
+
+    public Resultado excluirProjeto(int idTarefa) {
+        return tarefaDAO.deletar(idTarefa);
+    }
     
 }

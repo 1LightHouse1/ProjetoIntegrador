@@ -78,7 +78,7 @@ public class TelaListarTarefa implements Initializable {
 
     @FXML
     void adicionarUsuario(ActionEvent event) {
-
+        App.pushScreen("ADICIONARUSUARIOTAREFA");
     }
 
     @FXML
@@ -102,7 +102,18 @@ public class TelaListarTarefa implements Initializable {
 
     @FXML
     void excluirTarefa(ActionEvent event) {
+        Tarefa tarefa = tbTarefa.getSelectionModel().getSelectedItem();
+        Alert alert;
+        String msg = "";
 
+        Resultado rs2 = repositorioTarefa.excluirProjeto(tarefa.getIdTarefa());
+
+        msg = rs2.getMsg();
+
+        alert = new Alert(AlertType.INFORMATION,msg);
+        alert.showAndWait();
+
+        App.pushScreen("LISTARTAREFA");
     }
 
     @FXML

@@ -119,7 +119,20 @@ public class JDBCTarefaDAO implements TarefaDAO {
 
     @Override
     public Resultado deletar(int id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletar'");
+        try (Connection con = fabrica.getConnection()){
+            PreparedStatement pstm = con.prepareStatement("UPDATE Tarefa SET ativo = 0 WHERE idTarefa = ?");
+
+            pstm.setInt(1, id);
+
+            int ret = pstm.executeUpdate();
+
+            if(ret == 1){
+                
+                return Resultado.sucesso("Tarefa Excluida", pstm);
+            }
+            return Resultado.erro("Erro desconhecido!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 }

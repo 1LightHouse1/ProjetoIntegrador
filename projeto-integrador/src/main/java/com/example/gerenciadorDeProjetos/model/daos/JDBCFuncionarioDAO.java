@@ -1,6 +1,7 @@
 package com.example.gerenciadorDeProjetos.model.daos;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -127,8 +128,27 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
 
     @Override
     public Resultado atualizar(int id, Funcionario funcionario) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'atualizar'");
+        try (Connection con = fabrica.getConnection()){
+            PreparedStatement pstm = con.prepareStatement("UPDATE Funcionario SET nome = ?, login = ?, email = ?, senha = ?, cpf = ?, IdNivelDeAcesso = ? WHERE idFuncionario = ?");
+
+            pstm.setString(1,funcionario.getNome());
+            pstm.setString(2,funcionario.getLogin());
+            pstm.setString(3,funcionario.getEmail());
+            pstm.setString(4,funcionario.getSenha());
+            pstm.setString(5,funcionario.getCpf());
+            pstm.setInt(6,funcionario.getCargo().getIdNivelDeAcesso());
+            pstm.setInt(7, id);
+
+            int ret = pstm.executeUpdate();
+
+            if(ret == 1){
+                funcionario.setId(id);
+                return Resultado.sucesso("Usuário alterado", funcionario);
+            }
+            return Resultado.erro("Erro desconhecido!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
     }
 
     @Override

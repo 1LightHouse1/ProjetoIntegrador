@@ -57,7 +57,7 @@ public class App extends BaseAppNavigator{
         registraTela("LOGIN", new ScreenRegistryFXML(App.class, "telalogin.fxml", o->new TelaLogin(repositorioFuncionario)));
         registraTela("CADASTRARFUNCIONARIO", new ScreenRegistryFXML(App.class, "cadastrarfuncionario.fxml", o->new TelaCadastrarFuncionario( repositorioFuncionario, repositorioNivelDeAcesso)));
         registraTela("PRINCIPAL", new ScreenRegistryFXML(App.class, "principal.fxml", o->new Principal()));
-        registraTela("TELAMENU", new ScreenRegistryFXML(App.class, "telamenu.fxml", o->new TelaMenu()));
+        registraTela("TELAMENU", new ScreenRegistryFXML(App.class, "telamenu.fxml", o->new TelaMenu(repositorioFuncionario, repositorioNivelDeAcesso)));
         registraTela("CADASTRARPROJETO", new ScreenRegistryFXML(App.class, "cadastrarprojeto.fxml", o->new TelaCadastrarProjeto(repositorioFuncionario, repositorioProjeto)));
         registraTela("LISTARPROJETOS", new ScreenRegistryFXML(App.class, "listarprojeto.fxml", o->new TelaListarProjeto(repositorioProjeto, repositorioFuncionario)));
         registraTela("CADASTRARTAREFA", new ScreenRegistryFXML(App.class, "cadastrartarefa.fxml", o-> new TelaCadastrarTarefa(repositorioTarefa, repositorioProjeto, repositorioFuncionario)));
