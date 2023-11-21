@@ -13,6 +13,8 @@ public interface ProjetoDAO {
 
     Resultado listar();
 
+    Resultado buscarProjetoTarefa(int idTarefa);
+
     Resultado atualizar(int id, Projeto projeto);
 
     Resultado deletar(int id);

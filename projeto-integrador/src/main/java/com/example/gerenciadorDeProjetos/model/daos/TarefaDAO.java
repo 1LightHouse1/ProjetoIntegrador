@@ -10,7 +10,7 @@ public interface TarefaDAO {
 
     Resultado listar();
 
-    Resultado atualizar(int id, Funcionario funcionario);
+    Resultado atualizar(int id, Tarefa novaTarefa);
 
     Resultado deletar(int id);
 } 

@@ -145,7 +145,7 @@ public class TelaCadastrarTarefa implements Initializable {
 
     @FXML
     void listarTarefa(ActionEvent event) {
-        App.pushScreen("LISTARTAREFAS");
+        App.pushScreen("LISTARTAREFA");
     }
 
     @FXML
@@ -155,7 +155,16 @@ public class TelaCadastrarTarefa implements Initializable {
 
     @Override
     public void initialize(URL arg0, ResourceBundle arg1) {
-        Resultado r1 = repositorioProjeto.listar();
+        if(tarefa != null){
+            tfnome.setText(tarefa.getNomeTarefa());
+            tadescricao.setText(tarefa.getDescricao());
+            tfstatus.setText(tarefa.getStatus());
+            dpdatainicio.setValue(tarefa.getDataInicio());
+            dpdatatermino.setValue(tarefa.getDataTermino());
+            cbProjeto.setValue(tarefa.getProjeto());
+
+        } else{
+            Resultado r1 = repositorioProjeto.listar();
 
         if(r1.foiSucesso()){
             List<Projeto> list = (List)r1.comoSucesso().getObj();
@@ -164,6 +173,7 @@ public class TelaCadastrarTarefa implements Initializable {
             Alert alert = new Alert(AlertType.ERROR, r1.getMsg());
             alert.showAndWait();
         }
+        }   
     }
 
 }

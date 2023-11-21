@@ -30,7 +30,7 @@
          <children>
             <Button fx:id="btAlterar" layoutX="303.0" layoutY="247.0" mnemonicParsing="false" onAction="#editarTarefa" prefHeight="28.0" prefWidth="80.0" styleClass="botao-login" stylesheets="@css/style.css" text="Alterar" textFill="WHITE" />
             <Button fx:id="btcancelar" layoutX="303.0" layoutY="292.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="25.0" prefWidth="80.0" styleClass="botao-cadastrar" stylesheets="@css/style.css" text="Cancelar" textFill="#710079" />
-            <TableView layoutX="21.0" layoutY="14.0" onMouseClicked="#listarTarefas" prefHeight="166.0" prefWidth="365.0">
+            <TableView fx:id="tbTarefa" layoutX="21.0" layoutY="14.0" onMouseClicked="#listarTarefas" prefHeight="166.0" prefWidth="365.0">
                <columns>
                   <TableColumn fx:id="tbcTarefa" prefWidth="78.0" text="Tarefa" />
                   <TableColumn fx:id="tbcProjeto" prefWidth="91.0" text="Projeto" />

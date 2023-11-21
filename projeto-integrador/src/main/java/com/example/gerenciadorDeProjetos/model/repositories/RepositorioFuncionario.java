@@ -92,6 +92,10 @@ public class RepositorioFuncionario {
     public Resultado buscarFuncionarioProjeto(int idProjeto) {
         return funcionarioDAO.buscarFuncionarioProjeto(idProjeto);
     }
+
+    public Resultado buscarFuncionarioTarefa(int idTarefa) {
+        return funcionarioDAO.buscarFuncionarioTarefa(idTarefa);
+    }
     
     
 }

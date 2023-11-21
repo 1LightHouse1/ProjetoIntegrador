@@ -22,5 +22,8 @@ public interface FuncionarioDAO {
 
     Resultado buscarFuncionarioProjeto(int idProjeto);
 
+    Resultado buscarFuncionarioTarefa(int idTarefa);
+
+
 
 }

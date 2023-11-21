@@ -10,6 +10,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import com.example.gerenciadorDeProjetos.model.entities.Funcionario;
+import com.example.gerenciadorDeProjetos.model.entities.NivelDeAcesso;
 import com.example.gerenciadorDeProjetos.model.entities.Projeto;
 import com.example.gerenciadorDeProjetos.utils.DBUtils;
 import com.github.hugoperlin.results.Resultado;
@@ -122,6 +123,36 @@ public class JDBCProjetoDAO implements ProjetoDAO {
                 return Resultado.sucesso("Projeto Excluido", pstm);
             }
             return Resultado.erro("Erro desconhecido!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+
+    @Override
+    public Resultado buscarProjetoTarefa(int idTarefa) {
+        try (Connection con = fabrica.getConnection()) {
+
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM Projeto JOIN ProjetoTarefa pt ON Projeto.idProjeto = pt.idProjeto where pt.idTarefa = ?");
+
+            pstm.setInt(1, idTarefa);
+
+            ResultSet rs = pstm.executeQuery();
+
+             if(rs.next()){
+                int id = rs.getInt("idProjeto");
+                String nome = rs.getString("nomeProjeto");
+                String descricao = rs.getString("descricao");
+                String status = rs.getString("status");
+                LocalDate dataInicio = rs.getDate("dataInicio").toLocalDate();
+                LocalDate dataTermino = rs.getDate("dataTermino").toLocalDate();
+
+                Projeto projeto = new Projeto(id, nome, status, descricao, dataInicio, dataTermino);
+
+                return Resultado.sucesso("Ok", projeto);
+            }
+
+            return Resultado.erro("Erro Inesperado");
+
         } catch (SQLException e) {
             return Resultado.erro(e.getMessage());
         }

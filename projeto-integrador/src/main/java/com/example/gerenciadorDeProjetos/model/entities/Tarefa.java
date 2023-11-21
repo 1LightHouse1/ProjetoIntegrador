@@ -2,6 +2,7 @@ package com.example.gerenciadorDeProjetos.model.entities;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.List;
 
 public class Tarefa {
     private int idTarefa;
@@ -11,11 +12,33 @@ public class Tarefa {
     private String status;
     private LocalDate dataInicio;
     private LocalDate dataTermino;
+    private List<Funcionario> funcionarios;
 
     public Tarefa(int idTarefa, Projeto projeto, String nomeTarefa, String descricao, String status, LocalDate dataInicio,
             LocalDate dataTermino) {
         this.idTarefa = idTarefa;
         this.projeto = projeto;
+        this.nomeTarefa = nomeTarefa;
+        this.descricao = descricao;
+        this.status = status;
+        this.dataInicio = dataInicio;
+        this.dataTermino = dataTermino;
+        
+    }
+
+    public Tarefa(int idTarefa, String nomeTarefa, String descricao, String status, LocalDate dataInicio,
+            LocalDate dataTermino) {
+        this.idTarefa = idTarefa;
+        this.nomeTarefa = nomeTarefa;
+        this.descricao = descricao;
+        this.status = status;
+        this.dataInicio = dataInicio;
+        this.dataTermino = dataTermino;
+        
+    }
+
+    public Tarefa( String nomeTarefa, String descricao, String status, LocalDate dataInicio,
+            LocalDate dataTermino) {
         this.nomeTarefa = nomeTarefa;
         this.descricao = descricao;
         this.status = status;
@@ -38,12 +61,20 @@ public class Tarefa {
         return idTarefa;
     }
 
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
     public void setIdTarefa(int idTarefa) {
         this.idTarefa = idTarefa;
     }
 
     public Projeto getProjeto() {
         return projeto;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
     }
 
     public void setProjeto(Projeto projeto) {

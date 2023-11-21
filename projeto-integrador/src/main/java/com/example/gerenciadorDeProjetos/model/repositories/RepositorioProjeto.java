@@ -32,11 +32,11 @@ public class RepositorioProjeto {
             return Resultado.erro("descricao Inválida");
         }
         
-        if(dataInicio.isBefore(LocalDate.now())){
+        if(dataInicio.isBefore(LocalDate.now()) || dataTermino == null){
             return Resultado.erro("Data invalida");
         }
 
-        if(dataTermino.isBefore(LocalDate.now())){
+        if(dataTermino.isBefore(LocalDate.now()) || dataTermino == null){
             return Resultado.erro("Data invalida");
         }
 
@@ -81,11 +81,11 @@ public class RepositorioProjeto {
             return Resultado.erro("descricao Inválida");
         }
         
-        if(dataInicio.isBefore(LocalDate.now())){
+        if(dataInicio.isBefore(LocalDate.now()) || dataTermino == null){
             return Resultado.erro("Data invalida");
         }
 
-        if(dataTermino.isBefore(LocalDate.now())){
+        if(dataTermino.isBefore(LocalDate.now()) || dataTermino == null){
             return Resultado.erro("Data invalida");
         }
 

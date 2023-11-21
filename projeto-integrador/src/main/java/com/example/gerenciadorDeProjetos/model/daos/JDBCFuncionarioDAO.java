@@ -207,5 +207,53 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
         }
     }
 
+    @Override
+    public Resultado buscarFuncionarioTarefa(int idTarefa) {
+        try (Connection con = fabrica.getConnection()) {
+
+            PreparedStatement pstm = con.prepareStatement("SELECT * FROM Funcionario JOIN TarefaFuncionario tf ON Funcionario.idFuncionario = tf.idFuncionario where Tarefa_idTarefa = ?");
+            
+            ArrayList<Funcionario> lista = new ArrayList<>();
+
+            pstm.setInt(1, idTarefa);
+
+            ResultSet rs = pstm.executeQuery();
+
+             while(rs.next()){
+                int id = rs.getInt("idFuncionario");
+                String nome = rs.getString("nome");
+                String loginFuncionario = rs.getString("login");
+                String senhaFuncionario = rs.getString("senha");
+                String email = rs.getString("email");
+                String cpf = rs.getString("cpf");
+                int cargo = rs.getInt("IdNivelDeAcesso");
+
+                PreparedStatement pstm2 = con.prepareStatement("SELECT * FROM NivelDeAcesso WHERE idNivelDeAcesso = (?)");
+
+                pstm2.setInt(1, cargo);
+
+                ResultSet rs2 = pstm2.executeQuery();
+                rs2.next();
+
+                String tipoDeAcesso = rs2.getString("tipoDeAcesso");
+                String descricao = rs2.getString("descricao");
+                String permissoes = rs2.getString("permissoes");
+
+                NivelDeAcesso nivelDeAcesso = new NivelDeAcesso(cargo, descricao, tipoDeAcesso, permissoes);
+
+                Funcionario funcionario = new Funcionario(id, cpf, nome, nivelDeAcesso, loginFuncionario, senhaFuncionario, email);
+
+                lista.add(funcionario);
+            }
+
+            return Resultado.sucesso("ok", lista);
+
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+
+    
+
 
 }
