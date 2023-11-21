@@ -90,11 +90,23 @@ public class TelaListarProjeto implements Initializable {
 
     @FXML
     void editarProjeto(ActionEvent event) {
-        Projeto projeto = tbProjeto.getSelectionModel().getSelectedItem();
+        Resultado rs = repositorioFuncionario.temPermissao();
+
+        String msg = "";
+        Alert alert;
+
+        if(rs.foiErro()){
+            msg = rs.getMsg();
+            alert = new Alert(AlertType.ERROR,msg);
+            alert.showAndWait();
+        } else{
+            Projeto projeto = tbProjeto.getSelectionModel().getSelectedItem();
         
-        if(projeto != null){
-            App.pushScreen("CADASTRARPROJETO", o-> new TelaCadastrarProjeto(repositorioFuncionario, repositorioProjeto, projeto));
+            if(projeto != null){
+                App.pushScreen("CADASTRARPROJETO", o-> new TelaCadastrarProjeto(repositorioFuncionario, repositorioProjeto, projeto));
+            }
         }
+        
     }
 
     @FXML

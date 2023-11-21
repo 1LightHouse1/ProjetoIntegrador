@@ -10,7 +10,7 @@ import com.example.gerenciadorDeProjetos.model.entities.Projeto;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioFuncionario;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioNivelDeAcesso;
 import com.github.hugoperlin.results.Resultado;
-import com.mysql.cj.log.Log;
+import com.mysql.cj.log.Log; 
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
