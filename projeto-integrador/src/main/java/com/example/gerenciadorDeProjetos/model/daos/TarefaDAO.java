@@ -13,4 +13,6 @@ public interface TarefaDAO {
     Resultado atualizar(int id, Tarefa novaTarefa);
 
     Resultado deletar(int id);
+
+    Resultado adicionarFuncionarioTarefa(int id, int idTarefa);
 } 

@@ -82,7 +82,7 @@ public class TelaCadastrarTarefa implements Initializable {
 
     @FXML
     void adicionarUsuario(ActionEvent event) {
-        App.pushScreen("ADICIONARUSUARIO");
+        App.pushScreen("ADICIONARUSUARIOTAREFA");
     }
 
     @FXML

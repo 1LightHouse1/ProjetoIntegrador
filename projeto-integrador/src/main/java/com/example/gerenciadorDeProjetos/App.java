@@ -1,6 +1,8 @@
 package com.example.gerenciadorDeProjetos;
 
 import com.example.gerenciadorDeProjetos.controller.Principal;
+import com.example.gerenciadorDeProjetos.controller.TelaAdicionarFuncionarioProjeto;
+import com.example.gerenciadorDeProjetos.controller.TelaAdicionarFuncionarioTarefa;
 import com.example.gerenciadorDeProjetos.controller.TelaCadastrarFuncionario;
 import com.example.gerenciadorDeProjetos.controller.TelaCadastrarProjeto;
 import com.example.gerenciadorDeProjetos.controller.TelaCadastrarTarefa;
@@ -62,6 +64,8 @@ public class App extends BaseAppNavigator{
         registraTela("LISTARPROJETOS", new ScreenRegistryFXML(App.class, "listarprojeto.fxml", o->new TelaListarProjeto(repositorioProjeto, repositorioFuncionario)));
         registraTela("CADASTRARTAREFA", new ScreenRegistryFXML(App.class, "cadastrartarefa.fxml", o-> new TelaCadastrarTarefa(repositorioTarefa, repositorioProjeto, repositorioFuncionario)));
         registraTela("LISTARTAREFA", new ScreenRegistryFXML(App.class, "listartarefa.fxml", o-> new TelaListarTarefa(repositorioTarefa, repositorioFuncionario, repositorioProjeto)));
+        registraTela("ADICIONARUSUARIOPROJETO", new ScreenRegistryFXML(App.class, "adicionarfuncionarioprojeto.fxml", o-> new TelaAdicionarFuncionarioProjeto( repositorioFuncionario, repositorioProjeto)));
+        registraTela("ADICIONARUSUARIOTAREFA", new ScreenRegistryFXML(App.class, "adicionarfuncionariotarefa.fxml", o-> new TelaAdicionarFuncionarioTarefa( repositorioFuncionario, repositorioTarefa)));
     }
 
     

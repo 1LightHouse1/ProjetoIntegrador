@@ -135,4 +135,25 @@ public class JDBCTarefaDAO implements TarefaDAO {
             return Resultado.erro(e.getMessage());
         }
     }
+
+    @Override
+    public Resultado adicionarFuncionarioTarefa(int id, int idTarefa) {
+        try(Connection con = fabrica.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO TarefaFuncionario(idFuncionario, Tarefa_idTarefa) VALUES(?, ?)");
+
+            pstm.setInt(1, id);
+            pstm.setInt(2, idTarefa);
+
+            int ret = pstm.executeUpdate();
+
+            if(ret == 1){
+                
+                return Resultado.sucesso("Funcionario Adicionado a tarefa", pstm);
+            }
+
+            return Resultado.erro("Erro desconhecido!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
 }

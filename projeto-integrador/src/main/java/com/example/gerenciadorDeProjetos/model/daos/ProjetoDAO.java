@@ -10,6 +10,7 @@ import com.github.hugoperlin.results.Resultado;
 public interface ProjetoDAO {
 
     Resultado criar(Projeto projeto, int id);
+    Resultado adicionarFuncionarioProojeto(int idFuncionario, int idProjeto);
 
     Resultado listar();
 

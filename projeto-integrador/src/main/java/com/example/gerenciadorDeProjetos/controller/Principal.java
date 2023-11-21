@@ -53,7 +53,7 @@ public class Principal {
 
     @FXML
     void voltar(ActionEvent event) {
-        App.popScreen();
+        App.pushScreen("LOGIN");
     }
 
 }

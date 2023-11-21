@@ -75,7 +75,7 @@ public class TelaCadastrarProjeto implements Initializable {
 
     @FXML
     void adicionarUsuario(ActionEvent event) {
-        App.pushScreen("ADICIONARFUNCIONARIO");
+        App.pushScreen("ADICIONARUSUARIOPROJETO");
     }
 
     @FXML

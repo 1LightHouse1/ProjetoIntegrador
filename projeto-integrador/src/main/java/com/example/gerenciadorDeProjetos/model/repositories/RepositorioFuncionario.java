@@ -53,6 +53,12 @@ public class RepositorioFuncionario {
 
     }
 
+    public Resultado listarFuncionarios(){
+        Resultado resultado = funcionarioDAO.listar();
+
+        return resultado;
+    }
+
     public Resultado login(String login, String senha){
 
         if(login.isBlank() || login.isEmpty()){

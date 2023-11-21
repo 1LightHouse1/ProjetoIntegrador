@@ -157,4 +157,26 @@ public class JDBCProjetoDAO implements ProjetoDAO {
             return Resultado.erro(e.getMessage());
         }
     }
+
+    @Override
+    public Resultado adicionarFuncionarioProojeto(int idFuncionario, int idProjeto) {
+        try(Connection con = fabrica.getConnection()) {
+            PreparedStatement pstm = con.prepareStatement("INSERT INTO ProjetoFuncionario (idFuncionario, idProjeto) VALUES(?, ?)");
+
+            pstm.setInt(1, idFuncionario);
+            pstm.setInt(2, idProjeto);
+
+            int ret = pstm.executeUpdate();
+
+            if(ret == 1){
+                
+                return Resultado.sucesso("Funcionario Adicionado ao projeto", pstm);
+            }
+
+            return Resultado.erro("Erro desconhecido!");
+        } catch (SQLException e) {
+            return Resultado.erro(e.getMessage());
+        }
+    }
+
 }

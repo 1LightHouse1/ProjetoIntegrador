@@ -117,5 +117,10 @@ public class RepositorioTarefa {
     public Resultado excluirProjeto(int idTarefa) {
         return tarefaDAO.deletar(idTarefa);
     }
+
+    public Resultado adicionarFuncionarioTarefa(int id, int idTarefa) {
+        Resultado resultado = tarefaDAO.adicionarFuncionarioTarefa(id, idTarefa);
+        return resultado;
+    }
     
 }

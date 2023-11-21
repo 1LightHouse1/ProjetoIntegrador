@@ -48,6 +48,12 @@ public class RepositorioProjeto {
 
     }
 
+    public Resultado listarProjetos(){
+        Resultado resultado = projetoDAO.listar();
+
+        return resultado;
+    }
+
     public Resultado listar(){
         Resultado resultado = projetoDAO.listar();
 
@@ -96,6 +102,11 @@ public class RepositorioProjeto {
 
     public Resultado excluirProjeto(int idProjeto) {
         return projetoDAO.deletar(idProjeto);
+    }
+
+    public Resultado adicionarFuncionarioProojeto(int id, int idProjeto) {
+        Resultado resultado = projetoDAO.adicionarFuncionarioProojeto(id, idProjeto);
+        return resultado;
     }
 
     
