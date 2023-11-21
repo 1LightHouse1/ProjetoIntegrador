@@ -25,7 +25,7 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
     public Resultado criar(Funcionario funcionario) {
         try(Connection con = fabrica.getConnection()) {
             PreparedStatement pstm = con.
-                        prepareStatement("INSERT INTO Funcionario(nome, login, email, senha, cpf, IdNivelDeAcesso ) VALUES (?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
+                        prepareStatement("INSERT INTO Funcionario(nome, login, email, senha, cpf, IdNivelDeAcesso, ativo ) VALUES (?,?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS);
 
             pstm.setString(1,funcionario.getNome());
             pstm.setString(2,funcionario.getLogin());
@@ -33,6 +33,7 @@ public class JDBCFuncionarioDAO implements FuncionarioDAO {
             pstm.setString(4,funcionario.getSenha());
             pstm.setString(5,funcionario.getCpf());
             pstm.setInt(6,funcionario.getCargo().getIdNivelDeAcesso());
+            pstm.setInt(7, 1);
         
             int ret = pstm.executeUpdate();
 

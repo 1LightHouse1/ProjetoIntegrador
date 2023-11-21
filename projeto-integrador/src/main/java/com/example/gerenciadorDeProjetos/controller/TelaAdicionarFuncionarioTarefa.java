@@ -80,7 +80,7 @@ public class TelaAdicionarFuncionarioTarefa implements Initializable{
 
     @FXML
     void voltar(ActionEvent event) {
-        App.pushScreen("CADASTRARPROJETO");
+        App.pushScreen("CADASTRARTAREFA");
     }
 
     @Override

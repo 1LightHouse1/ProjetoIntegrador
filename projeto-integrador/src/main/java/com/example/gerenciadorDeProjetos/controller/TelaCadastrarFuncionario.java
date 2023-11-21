@@ -118,16 +118,26 @@ public class TelaCadastrarFuncionario implements Initializable {
             pfsenha.setText(funcionario.getSenha());
             tfcpf.setText(funcionario.getCpf());
             cbNivelDeAcesso.setValue(funcionario.getCargo());
-        } else{
+
             Resultado r1 = repositorioNivelDeAcesso.listarNivelDeAcesso();
 
-        if(r1.foiSucesso()){
+            if(r1.foiSucesso()){
             List<NivelDeAcesso> list = (List)r1.comoSucesso().getObj();
             cbNivelDeAcesso.getItems().addAll(list);
-        } else{
-            Alert alert = new Alert(AlertType.ERROR, r1.getMsg());
-            alert.showAndWait();
-        }
+            } else{
+                Alert alert = new Alert(AlertType.ERROR, r1.getMsg());
+                alert.showAndWait();
+            }
+        }else{
+            Resultado r1 = repositorioNivelDeAcesso.listarNivelDeAcesso();
+
+            if(r1.foiSucesso()){
+            List<NivelDeAcesso> list = (List)r1.comoSucesso().getObj();
+            cbNivelDeAcesso.getItems().addAll(list);
+            } else{
+                Alert alert = new Alert(AlertType.ERROR, r1.getMsg());
+                alert.showAndWait();
+            }
         }
         
     }
