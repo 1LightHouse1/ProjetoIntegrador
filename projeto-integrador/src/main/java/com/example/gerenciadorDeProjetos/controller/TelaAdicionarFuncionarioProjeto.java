@@ -56,20 +56,29 @@ public class TelaAdicionarFuncionarioProjeto implements Initializable {
         Funcionario funcionario = cbFuncionario.getValue();
         Projeto projeto = cbProjeto1.getValue();
 
-        Resultado resultado = repositorioProjeto.adicionarFuncionarioProojeto(funcionario.getId(), projeto.getIdProjeto());
-
         String msg = "";
         Alert alert;
 
-        if(resultado.foiErro()){
-            msg = resultado.getMsg();
+        Resultado rs = repositorioFuncionario.temPermissao();
+
+        if(rs.foiErro()){
+            msg = rs.getMsg();
             alert = new Alert(AlertType.ERROR,msg);
             alert.showAndWait();
         } else{
-            msg = resultado.getMsg();
-            alert = new Alert(AlertType.INFORMATION,msg);
-            alert.showAndWait();
+            Resultado resultado = repositorioProjeto.adicionarFuncionarioProojeto(funcionario.getId(), projeto.getIdProjeto());
+
+            if(resultado.foiErro()){
+                msg = resultado.getMsg();
+                alert = new Alert(AlertType.ERROR,msg);
+                alert.showAndWait();
+            } else{
+                msg = resultado.getMsg();
+                alert = new Alert(AlertType.INFORMATION,msg);
+                alert.showAndWait();
+            }
         }
+
     }   
 
     @FXML

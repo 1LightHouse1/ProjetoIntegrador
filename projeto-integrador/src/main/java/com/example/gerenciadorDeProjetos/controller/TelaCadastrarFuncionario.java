@@ -83,6 +83,7 @@ public class TelaCadastrarFuncionario implements Initializable {
                 alert = new Alert(AlertType.ERROR,msg);
             }else{
                 alert = new Alert(AlertType.INFORMATION,msg);
+                limpar();
                 
             }
 
@@ -98,6 +99,7 @@ public class TelaCadastrarFuncionario implements Initializable {
             } else{
                 alert = new Alert(AlertType.INFORMATION,msg);
                 alert.showAndWait();
+                limpar();
             }
         }
         
@@ -137,9 +139,19 @@ public class TelaCadastrarFuncionario implements Initializable {
             } else{
                 Alert alert = new Alert(AlertType.ERROR, r1.getMsg());
                 alert.showAndWait();
+                
             }
         }
         
+    }
+
+    public void limpar(){
+        tfnome.clear();
+        tfcpf.clear();
+        tfemail.clear();
+        tflogin.clear();
+        pfsenha.clear();
+        cbNivelDeAcesso.setPromptText("Cargo");
     }
 
 }

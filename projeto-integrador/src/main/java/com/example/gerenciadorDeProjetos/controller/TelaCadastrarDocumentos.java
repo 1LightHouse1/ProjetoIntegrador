@@ -10,6 +10,7 @@ import com.example.gerenciadorDeProjetos.model.entities.Funcionario;
 import com.example.gerenciadorDeProjetos.model.entities.Login;
 import com.example.gerenciadorDeProjetos.model.entities.Projeto;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioDocumentos;
+import com.example.gerenciadorDeProjetos.model.repositories.RepositorioFuncionario;
 import com.example.gerenciadorDeProjetos.model.repositories.RepositorioProjeto;
 import com.github.hugoperlin.results.Resultado;
 
@@ -49,11 +50,14 @@ public class TelaCadastrarDocumentos implements Initializable {
 
     private RepositorioDocumentos repositorioDocumentos;
     private RepositorioProjeto repositorioProjeto;
+    private RepositorioFuncionario repositorioFuncionario;
     private File arquivoSelecionado = null;
 
-    public TelaCadastrarDocumentos(RepositorioDocumentos repositorioDocumentos, RepositorioProjeto repositorioProjeto) {
+    public TelaCadastrarDocumentos(RepositorioDocumentos repositorioDocumentos, RepositorioProjeto repositorioProjeto, RepositorioFuncionario repositorioFuncionario) {
         this.repositorioDocumentos = repositorioDocumentos;
         this.repositorioProjeto = repositorioProjeto;
+        this.repositorioFuncionario = repositorioFuncionario;
+
     }
 
     @FXML
@@ -61,19 +65,26 @@ public class TelaCadastrarDocumentos implements Initializable {
         String nome = tfnome.getText();
         String descricao = tadescricao.getText();
         Projeto projeto = cbProjeto.getValue();
-        String msg = "";
         Funcionario funcionario = Login.getFuncionarioAtual();
+        Alert alert;
+        String msg = "";
 
         if(arquivoSelecionado != null){
-            Resultado rs = repositorioDocumentos.adicionarDocumento(nome, descricao, projeto, arquivoSelecionado.getAbsolutePath(), funcionario.getId());
-            
+            Resultado rs = repositorioFuncionario.temPermissao();
             msg = rs.getMsg();
-            Alert alert = new Alert(AlertType.INFORMATION, msg);
-            alert.showAndWait();
-        } else{
-            Alert alert = new Alert(AlertType.ERROR, "Erro Inesperado");
-            alert.showAndWait();
+
+            if(rs.foiErro()){
+                alert = new Alert(AlertType.ERROR,msg);
+                alert.showAndWait();
+            } else{
+                Resultado rs2 = repositorioDocumentos.adicionarDocumento(nome, descricao, projeto, arquivoSelecionado.getAbsolutePath(), funcionario.getId());
+                msg = rs2.getMsg();
+
+                alert = new Alert(AlertType.INFORMATION,msg);
+                alert.showAndWait();
+            }
         }
+            
         
     }
 
